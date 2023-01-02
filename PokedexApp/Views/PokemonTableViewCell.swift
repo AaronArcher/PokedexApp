@@ -77,11 +77,6 @@ class PokemonTableViewCell: UITableViewCell {
         typeStackView.addArrangedSubview(pokemonTypeLabel)
         typeStackView.addArrangedSubview(pokemonTypes)
         
-//        contentView.addSubview(pokemonName)
-//        contentView.addSubview(pokemonNumber)
-//        contentView.addSubview(pokemonTypeLabel)
-//        contentView.addSubview(pokemonTypes)
-        
         applyConstraints()
     }
     
@@ -139,36 +134,14 @@ class PokemonTableViewCell: UITableViewCell {
                 let joinedTypes = types.joined(separator: ", ")
                 pokemonTypes.text = joinedTypes
                 
-                contentView.backgroundColor = setBackgroundColor(types: joinedTypes)
+                contentView.backgroundColor = UIHelper.setCellBackgroundColor(types: joinedTypes)
                 
             } catch {
                 print(error)
             }
         }
     }
-    
-    private func setBackgroundColor(types: String) -> UIColor {
-        if types.contains("Grass") {
-            return .green.withAlphaComponent(0.15)
-        } else if types.contains("Fire") {
-            return.red.withAlphaComponent(0.15)
-        } else if types.contains("Water") {
-            return .blue.withAlphaComponent(0.15)
-        } else if types.contains("Electric") {
-            return .yellow.withAlphaComponent(0.15)
-        } else if types.contains("Poison") {
-            return .purple.withAlphaComponent(0.15)
-        } else if types.contains("Ground") {
-            return .brown.withAlphaComponent(0.15)
-        } else if types.contains("Psychic") {
-            return .cyan.withAlphaComponent(0.15)
-        } else if types.contains("Fairy") {
-            return .systemPink.withAlphaComponent(0.15)
-        } else {
-            return .systemBackground
-        }
-    }
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -47,8 +47,6 @@ class PokemonTableViewController: UIViewController {
                 print(error)
             }
         }
-        
-        
     }
     
 
