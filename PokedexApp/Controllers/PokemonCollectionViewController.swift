@@ -77,4 +77,11 @@ extension PokemonCollectionViewController: UICollectionViewDelegate, UICollectio
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let destVC = PokemonDetailViewController()
+        destVC.configure(name: pokemon[indexPath.row].name, number: indexPath.row + 1)
+        present(destVC, animated: true)
+        
+    }
+    
 }

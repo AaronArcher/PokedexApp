@@ -25,23 +25,23 @@ enum UIHelper {
     
     static func setCellBackgroundColor(types: String) -> UIColor {
         if types.contains("Grass") {
-            return .green.withAlphaComponent(0.15)
+            return .green.withAlphaComponent(0.2)
         } else if types.contains("Fire") {
-            return.red.withAlphaComponent(0.15)
+            return.red.withAlphaComponent(0.2)
         } else if types.contains("Water") {
-            return .blue.withAlphaComponent(0.15)
+            return .blue.withAlphaComponent(0.2)
         } else if types.contains("Electric") {
-            return .yellow.withAlphaComponent(0.15)
+            return .yellow.withAlphaComponent(0.2)
         } else if types.contains("Poison") {
-            return .purple.withAlphaComponent(0.15)
+            return .purple.withAlphaComponent(0.2)
         } else if types.contains("Ground") {
-            return .brown.withAlphaComponent(0.15)
+            return .brown.withAlphaComponent(0.2)
         } else if types.contains("Psychic") {
-            return .cyan.withAlphaComponent(0.15)
+            return .cyan.withAlphaComponent(0.2)
         } else if types.contains("Fairy") {
-            return .systemPink.withAlphaComponent(0.15)
+            return .systemPink.withAlphaComponent(0.2)
         } else {
-            return .lightGray.withAlphaComponent(0.15)
+            return .lightGray.withAlphaComponent(0.2)
         }
     }
     

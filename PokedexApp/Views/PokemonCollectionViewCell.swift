@@ -127,4 +127,14 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        pokemonImage.image = UIImage(systemName: "photo.fill")
+        pokemonNumber.text = nil
+        pokemonName.text = nil
+        pokemonTypes.text = nil
+        contentView.backgroundColor = .systemBackground
+    }
+    
 }
