@@ -115,11 +115,9 @@ class PokemonCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func getImage(number: String) {
-        let imageString = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/\(number).png"
-        
+    func getImage(number: String) {        
         Task {
-            let image = await ImageCache.shared.downloadImage(from: imageString)
+            let image = await ImageCache.shared.downloadImage(pokemonNumber: number)
             pokemonImage.image = image
         }
     }

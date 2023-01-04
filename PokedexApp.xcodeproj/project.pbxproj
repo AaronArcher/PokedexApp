@@ -24,6 +24,7 @@
 		EE408DB829634A9A00AE5CF3 /* PokemonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE408DB729634A9A00AE5CF3 /* PokemonCollectionViewCell.swift */; };
 		EE408DBA29634E6500AE5CF3 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE408DB929634E6500AE5CF3 /* UIHelper.swift */; };
 		EE408DBC2964C98D00AE5CF3 /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE408DBB2964C98D00AE5CF3 /* PokemonDetailViewController.swift */; };
+		EE408DBE2966244500AE5CF3 /* PokemonRegionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE408DBD2966244500AE5CF3 /* PokemonRegionResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		EE408DB729634A9A00AE5CF3 /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE408DB929634E6500AE5CF3 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		EE408DBB2964C98D00AE5CF3 /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
+		EE408DBD2966244500AE5CF3 /* PokemonRegionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRegionResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			children = (
 				EE408D9F2956064000AE5CF3 /* PokemonResponse.swift */,
 				EE408DB1295F385B00AE5CF3 /* PokemonDetailResponse.swift */,
+				EE408DBD2966244500AE5CF3 /* PokemonRegionResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			files = (
 				EE408DA4295DE3A100AE5CF3 /* ImageCache.swift in Sources */,
 				EE408DAD295DF75300AE5CF3 /* Extensions.swift in Sources */,
+				EE408DBE2966244500AE5CF3 /* PokemonRegionResponse.swift in Sources */,
 				EE408DBC2964C98D00AE5CF3 /* PokemonDetailViewController.swift in Sources */,
 				EE408DB4296082DD00AE5CF3 /* PokemonCollectionViewController.swift in Sources */,
 				EE408DA9295DE94A00AE5CF3 /* CustomError.swift in Sources */,

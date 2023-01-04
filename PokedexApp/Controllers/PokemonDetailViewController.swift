@@ -10,10 +10,9 @@ import UIKit
 class PokemonDetailViewController: UIViewController {
 
     
-    
     private var pokemonName: UILabel = {
         let label = UILabel()
-        label.text = "Test"
+        label.font = UIFont.systemFont(ofSize: 45, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -21,18 +20,7 @@ class PokemonDetailViewController: UIViewController {
     private var pokemonNumber: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private var pokemonTypeTitle: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private var pokemonTypes: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 40, weight: .light)
         return label
     }()
     
@@ -55,6 +43,90 @@ class PokemonDetailViewController: UIViewController {
         return circle
     }()
     
+    private let detailStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 0
+        stackView.alignment = .leading
+        stackView.axis = .vertical
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private var typeStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 50
+        stackView.alignment = .leading
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private var pokemonTypeTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Type:"
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var pokemonTypes: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.italicSystemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var habitatStackView: UIStackView = {
+        let stackView = UIStackView()
+//        stackView.spacing = 20
+        stackView.alignment = .leading
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private var pokemonHabitatTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Habitat:"
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var pokemonHabitat: UILabel = {
+        let label = UILabel()
+        label.text = "Cave"
+        label.font = UIFont.italicSystemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var regionStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 20
+        stackView.alignment = .leading
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private var pokemonRegionTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Region:"
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private var pokemonRegion: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.italicSystemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -62,7 +134,23 @@ class PokemonDetailViewController: UIViewController {
         view.addSubview(imageSection)
         imageSection.addSubview(imageBackground)
         imageSection.addSubview(pokemonImage)
+        view.addSubview(pokemonNumber)
         
+        view.addSubview(detailStackView)
+        detailStackView.addArrangedSubview(pokemonName)
+        detailStackView.setCustomSpacing(10, after: pokemonName)
+        detailStackView.addArrangedSubview(typeStackView)
+        detailStackView.addArrangedSubview(habitatStackView)
+        detailStackView.addArrangedSubview(regionStackView)
+        
+        typeStackView.addArrangedSubview(pokemonTypeTitle)
+        typeStackView.addArrangedSubview(pokemonTypes)
+        
+        habitatStackView.addArrangedSubview(pokemonHabitatTitle)
+        habitatStackView.addArrangedSubview(pokemonHabitat)
+        
+        regionStackView.addArrangedSubview(pokemonRegionTitle)
+        regionStackView.addArrangedSubview(pokemonRegion)
         
         setConstraints()
         imageBackground.layer.cornerRadius = (view.frame.width - 20) / 2.6
@@ -72,19 +160,22 @@ class PokemonDetailViewController: UIViewController {
     
     func configure(name: String, number: Int) {
         let formattedPokemonNumber = String(format: "%03d", number)
-        getImage(number: formattedPokemonNumber)
+        pokemonName.text = name.capitalizingFirstLetter()
+        pokemonNumber.text = "#\(formattedPokemonNumber)"
+        getImage(pokemonNumber: formattedPokemonNumber)
         getDetails(number: number)
+        getHabitat(number: number)
     }
         
     private func setConstraints() {
         
-        let imageSectionHeight = view.frame.width - 20
+        let imageSectionHeight = view.frame.width - 10
         
         NSLayoutConstraint.activate([
         
-            imageSection.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            imageSection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            imageSection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            imageSection.topAnchor.constraint(equalTo: view.topAnchor, constant: 5),
+            imageSection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            imageSection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             imageSection.heightAnchor.constraint(lessThanOrEqualToConstant: imageSectionHeight),
             
             imageBackground.centerXAnchor.constraint(equalTo: imageSection.centerXAnchor),
@@ -97,15 +188,20 @@ class PokemonDetailViewController: UIViewController {
             pokemonImage.trailingAnchor.constraint(equalTo: imageSection.trailingAnchor, constant: -10),
             pokemonImage.bottomAnchor.constraint(equalTo: imageSection.bottomAnchor, constant: -10),
             
+            pokemonNumber.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
+            pokemonNumber.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            
+            detailStackView.topAnchor.constraint(equalTo: imageSection.bottomAnchor, constant: 5),
+            detailStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            
+            pokemonHabitat.leadingAnchor.constraint(equalTo: pokemonTypes.leadingAnchor)
             
         ])
     }
     
-    func getImage(number: String) {
-        let imageString = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/\(number).png"
-        
+    func getImage(pokemonNumber number: String) {
         Task {
-            let image = await ImageCache.shared.downloadImage(from: imageString)
+            let image = await ImageCache.shared.downloadImage(pokemonNumber: number)
             pokemonImage.image = image
         }
     }
@@ -121,10 +217,23 @@ class PokemonDetailViewController: UIViewController {
                     types.append(type.type.name.capitalizingFirstLetter())
                 }
                 let joinedTypes = types.joined(separator: ", ")
-//                pokemonTypes.text = joinedTypes
+                pokemonTypes.text = joinedTypes
                 
                 imageBackground.backgroundColor = UIHelper.setCellBackgroundColor(types: joinedTypes)
                 
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func getHabitat(number: Int) {
+        Task {
+            do {
+                let habitat = try await NetworkManager.shared.getPokemonHabitat(id: number)
+                
+                pokemonHabitat.text = habitat.name?.capitalizingFirstLetter() ?? "Unknown"
+                                
             } catch {
                 print(error)
             }

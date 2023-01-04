@@ -18,10 +18,12 @@ class ImageCache {
     }
     
     
-    func downloadImage(from urlString: String) async -> UIImage? {
-        let cacheKey = NSString(string: urlString)
+    func downloadImage(pokemonNumber: String) async -> UIImage? {
+        let imageString = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/\(pokemonNumber).png"
+        
+        let cacheKey = NSString(string: imageString)
         if let image = cache.object(forKey: cacheKey) { return image }
-        guard let url = URL(string: urlString) else { return nil }
+        guard let url = URL(string: imageString) else { return nil }
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)

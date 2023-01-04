@@ -64,5 +64,25 @@ class NetworkManager {
 
     }
     
+    func getPokemonHabitat(id: Int) async throws -> PokemonHabitatResponse {
+
+        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon-habitat/\(id)") else {
+            throw CustomError.generalError
+        }
+
+        let (data, response) = try await URLSession.shared.data(from: url)
+
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw CustomError.invalidResponse
+        }
+
+        do {
+            return try JSONDecoder().decode(PokemonHabitatResponse.self, from: data)
+        } catch {
+            throw CustomError.invalidData
+        }
+
+    }
+    
     
 }
