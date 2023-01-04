@@ -95,7 +95,7 @@ class PokemonDetailViewController: UIViewController {
     
     private var pokemonHabitat: UILabel = {
         let label = UILabel()
-        label.text = "Cave"
+//        label.text = "Unknown"
         label.font = UIFont.italicSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -232,10 +232,10 @@ class PokemonDetailViewController: UIViewController {
             do {
                 let habitat = try await NetworkManager.shared.getPokemonHabitat(id: number)
                 
-                pokemonHabitat.text = habitat.name?.capitalizingFirstLetter() ?? "Unknown"
+                    pokemonHabitat.text = habitat.name.capitalizingFirstLetter()
                                 
             } catch {
-                print(error)
+                pokemonHabitat.text = "Unknown"
             }
         }
     }
